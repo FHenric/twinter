@@ -1,5 +1,7 @@
 <div class="border border-red-500 rounded-lg px-8 py-6 mb-8">
-    <form action="" method="post">
+    <form action="/tweets" method="POST">
+        @csrf
+
         <textarea 
         name="body" 
         class="w-full"
@@ -11,7 +13,7 @@
         <footer class="flex justify-between">
 
             <img 
-            src="https://i.pravatar.cc/40" 
+            src="{{auth()->user()->avatar}}" 
             alt="" 
             class="rounded-full">
 
@@ -22,4 +24,7 @@
             </button>
         </footer>
     </form>
+    @error('body')
+        <p class="text-red-900 font-bold text-sm mt-1">{{$message}}</p>
+    @enderror
 </div>
